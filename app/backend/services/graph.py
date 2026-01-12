@@ -7,9 +7,13 @@ from langgraph.graph import END, StateGraph
 from app.backend.services.agent_service import create_agent_function
 from src.agents.portfolio_manager import portfolio_management_agent
 from src.agents.risk_manager import risk_management_agent
-from src.main import start
 from src.utils.analysts import ANALYST_CONFIG
 from src.graph.state import AgentState
+
+# Simple start function to replace the one from src.main
+def start(state):
+    """Simple start function to initialize the graph."""
+    return state
 
 
 def extract_base_agent_key(unique_id: str) -> str:
