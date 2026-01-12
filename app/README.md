@@ -1,231 +1,231 @@
-# Web Application
-The AI Hedge Fund app is a complete system with both frontend and backend components that enables you to run an AI-powered hedge fund trading system through a web interface on your own computer.
+# Web 应用程序
+AI 对冲基金应用是一个完整的系统，包含前端和后端组件，使您能够通过自己计算机上的 Web 界面运行 AI 驱动的对冲基金交易系统。
 
 <img width="1721" alt="Screenshot 2025-06-28 at 6 41 03 PM" src="https://github.com/user-attachments/assets/b95ab696-c9f4-416c-9ad1-51feb1f5374b" />
 
 
-## Overview
+## 概述
 
-The AI Hedge Fund consists of:
+AI 对冲基金由以下部分组成：
 
-- **Backend**: A FastAPI application that provides a REST API to run the hedge fund trading system and backtester
-- **Frontend**: A React/Vite application that offers a user-friendly interface to visualize and control the hedge fund operations
+- **后端**：一个 FastAPI 应用程序，提供 REST API 来运行对冲基金交易系统和回测器
+- **前端**：一个 React/Vite 应用程序，提供用户友好的界面来可视化和控制对冲基金操作
 
-## Table of Contents
+## 目录
 
-- [🚀 Quick Start (For Non-Technical Users)](#-quick-start-for-non-technical-users)
-  - [Option 1: Using 1-Line Shell Script (Recommended)](#option-1-using-1-line-shell-script-recommended)
-  - [Option 2: Using npm (Alternative)](#option-2-using-npm-alternative)
-- [🛠️ Manual Setup (For Developers)](#️-manual-setup-for-developers)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running the Application](#running-the-application)
-- [Detailed Documentation](#detailed-documentation)
-- [Disclaimer](#disclaimer)
-- [Troubleshooting](#troubleshooting])
+- [🚀 快速开始（面向非技术用户）](#-快速开始面向非技术用户)
+  - [选项 1：使用 1 行 Shell 脚本（推荐）](#选项-1-使用-1-行-shell-脚本推荐)
+  - [选项 2：使用 npm（替代方案）](#选项-2-使用-npm替代方案)
+- [🛠️ 手动设置（面向开发者）](#️-手动设置面向开发者)
+  - [前提条件](#前提条件)
+  - [安装](#安装)
+  - [运行应用程序](#运行应用程序)
+- [详细文档](#详细文档)
+- [免责声明](#免责声明)
+- [故障排除](#故障排除])
 
-## 🚀 Quick Start (For Non-Technical Users)
+## 🚀 快速开始（面向非技术用户）
 
-**One-line setup and run command:**
+**一行设置和运行命令：**
 
-### Option 1: Using 1-Line Shell Script (Recommended)
+### 选项 1：使用 1 行 Shell 脚本（推荐）
 
-#### For Mac/Linux:
+#### 对于 Mac/Linux：
 ```bash
 ./run.sh
 ```
 
-If you get a "permission denied" error, run this first:
+如果您收到 "permission denied" 错误，请先运行此命令：
 ```bash
 chmod +x run.sh && ./run.sh
 ```
 
-Or alternatively, you can run:
+或者，您也可以运行：
 ```bash
 bash run.sh
 ```
 
-#### For Windows:
+#### 对于 Windows：
 ```cmd
 run.bat
 ```
 
-### Option 2: Using npm (Alternative)
+### 选项 2：使用 npm（替代方案）
 ```bash
 cd app && npm install && npm run setup
 ```
 
-**That's it!** These scripts will:
-1. Check for required dependencies (Node.js, Python, Poetry)
-2. Install all dependencies automatically
-3. Start both frontend and backend services
-4. **Automatically open your web browser** to the application
+**就这样！** 这些脚本将：
+1. 检查所需的依赖项（Node.js、Python、Poetry）
+2. 自动安装所有依赖项
+3. 启动前端和后端服务
+4. **自动打开您的 Web 浏览器** 到应用程序
 
-**Requirements:**
-- [Node.js](https://nodejs.org/) (includes npm)
+**要求：**
+- [Node.js](https://nodejs.org/)（包含 npm）
 - [Python 3](https://python.org/)
 - [Poetry](https://python-poetry.org/)
 
-**After running, you can access:**
-- Frontend (Web Interface): http://localhost:5173
-- Backend API: http://localhost:8000
-- API Documentation: http://localhost:8000/docs
+**运行后，您可以访问：**
+- 前端（Web 界面）：http://localhost:5173
+- 后端 API：http://localhost:8000
+- API 文档：http://localhost:8000/docs
 
 ---
 
-## 🛠️ Manual Setup (For Developers)
+## 🛠️ 手动设置（面向开发者）
 
-If you prefer to set up each component manually or need more control:
+如果您更喜欢手动设置每个组件或需要更多控制：
 
-### Prerequisites
+### 前提条件
 
-- Node.js and npm for the frontend
-- Python 3.8+ and Poetry for the backend
+- 前端需要 Node.js 和 npm
+- 后端需要 Python 3.8+ 和 Poetry
 
-### Installation
+### 安装
 
-1. Clone the repository:
+1. 克隆仓库：
 ```bash
 git clone https://github.com/virattt/ai-hedge-fund.git
 cd ai-hedge-fund
 ```
 
-2. Set up your environment variables:
+2. 设置环境变量：
 ```bash
-# Create .env file for your API keys (in the root directory)
+# 在根目录创建 .env 文件用于存储 API 密钥
 cp .env.example .env
 ```
 
-3. Edit the .env file to add your API keys:
+3. 编辑 .env 文件以添加您的 API 密钥：
 ```bash
-# For running LLMs hosted by openai (gpt-4o, gpt-4o-mini, etc.)
+# 用于运行 openai 托管的 LLM（gpt-4o, gpt-4o-mini 等）
 OPENAI_API_KEY=your-openai-api-key
 
-# For running LLMs hosted by groq (deepseek, llama3, etc.)
+# 用于运行 groq 托管的 LLM（deepseek, llama3 等）
 GROQ_API_KEY=your-groq-api-key
 
-# For getting financial data to power the hedge fund
+# 用于获取为对冲基金提供动力的金融数据
 FINANCIAL_DATASETS_API_KEY=your-financial-datasets-api-key
 ```
 
-4. Install Poetry (if not already installed):
+4. 安装 Poetry（如果尚未安装）：
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-5. Install root project dependencies:
+5. 安装根项目依赖：
 ```bash
-# From the root directory
+# 从根目录
 poetry install
 ```
 
-6. Install backend app dependencies:
+6. 安装后端应用依赖：
 ```bash
-# Navigate to the backend directory
+# 导航到后端目录
 cd app/backend
-pip install -r requirements.txt  # If there's a requirements.txt file
-# OR
-poetry install  # If there's a pyproject.toml in the backend directory
+pip install -r requirements.txt  # 如果存在 requirements.txt 文件
+# 或者
+poetry install  # 如果后端目录中有 pyproject.toml
 ```
 
-7. Install frontend app dependencies:
+7. 安装前端应用依赖：
 ```bash
 cd app/frontend
-npm install  # or pnpm install or yarn install
+npm install  # 或 pnpm install 或 yarn install
 ```
 
-### Running the Application
+### 运行应用程序
 
-1. Start the backend server:
+1. 启动后端服务器：
 ```bash
-# In one terminal, from the backend directory
+# 在一个终端中，从后端目录
 cd app/backend
 poetry run uvicorn main:app --reload
 ```
 
-2. Start the frontend application:
+2. 启动前端应用程序：
 ```bash
-# In another terminal, from the frontend directory
+# 在另一个终端中，从前端目录
 cd app/frontend
 npm run dev
 ```
 
-You can now access:
-- Frontend application: http://localhost:5173
-- Backend API: http://localhost:8000
-- API Documentation: http://localhost:8000/docs
+现在您可以访问：
+- 前端应用程序：http://localhost:5173
+- 后端 API：http://localhost:8000
+- API 文档：http://localhost:8000/docs
 
-## Detailed Documentation
+## 详细文档
 
-For more detailed information:
-- [Backend Documentation](./backend/README.md)
-- [Frontend Documentation](./frontend/README.md)
+如需更详细的信息：
+- [后端文档](./backend/README.md)
+- [前端文档](./frontend/README.md)
 
-## Disclaimer
+## 免责声明
 
-This project is for **educational and research purposes only**.
+该项目仅用于**教育和研究目的**。
 
-- Not intended for real trading or investment
-- No warranties or guarantees provided
-- Creator assumes no liability for financial losses
-- Consult a financial advisor for investment decisions
+- 不打算用于实际交易或投资
+- 不提供任何保证或担保
+- 创建者对财务损失不承担任何责任
+- 投资决策请咨询财务顾问
 
-By using this software, you agree to use it solely for learning purposes.
+使用本软件，即表示您同意仅将其用于学习目的。
 
-## Troubleshooting
+## 故障排除
 
-### Common Issues
+### 常见问题
 
-#### "Command not found: uvicorn" Error
-If you see this error when running the setup script:
+#### "Command not found: uvicorn" 错误
+如果您在运行设置脚本时看到此错误：
 
 ```bash
-[ERROR] Backend failed to start. Check the logs:
+[ERROR] 后端启动失败。检查日志：
 Command not found: uvicorn
 ```
 
-**Solution:**
-1. **Clean Poetry environment:**
+**解决方案：**
+1. **清理 Poetry 环境：**
    ```bash
    cd app/backend
    poetry env remove --all
    poetry install
    ```
 
-2. **Or force reinstall:**
+2. **或强制重新安装：**
    ```bash
    cd app/backend
    poetry install --sync
    ```
 
-3. **Verify installation:**
+3. **验证安装：**
    ```bash
    cd app/backend
    poetry run python -c "import uvicorn; import fastapi"
    ```
 
-#### Python Version Issues
-- **Use Python 3.11**: Python 3.13+ may have compatibility issues
-- **Check your Python version:** `python --version`
-- **Switch Python versions if needed** (using pyenv, conda, etc.)
+#### Python 版本问题
+- **使用 Python 3.11**：Python 3.13+ 可能存在兼容性问题
+- **检查您的 Python 版本：** `python --version`
+- **根据需要切换 Python 版本**（使用 pyenv、conda 等）
 
-#### Environment Variable Issues
-- **Ensure .env file exists** in the project root directory
-- **Copy from template:** `cp .env.example .env`
-- **Add your API keys** to the .env file
+#### 环境变量问题
+- **确保 .env 文件存在**于项目根目录
+- **从模板复制：** `cp .env.example .env`
+- **向 .env 文件添加您的 API 密钥**
 
-#### Permission Issues (Mac/Linux)
-If you get "permission denied":
+#### 权限问题（Mac/Linux）
+如果您收到 "permission denied"：
 ```bash
 chmod +x run.sh
 ./run.sh
 ```
 
-#### Port Already in Use
-If ports 8000 or 5173 are in use:
-- **Kill existing processes:** `pkill -f "uvicorn\|vite"`
-- **Or use different ports** by modifying the scripts
+#### 端口已被占用
+如果端口 8000 或 5173 已被占用：
+- **终止现有进程：** `pkill -f "uvicorn\|vite"`
+- **或使用不同的端口** 通过修改脚本
 
-### Getting Help
-- Check the [GitHub Issues](https://github.com/virattt/ai-hedge-fund/issues)
-- Follow updates on [Twitter](https://x.com/virattt) 
+### 获取帮助
+- 查看 [GitHub Issues](https://github.com/virattt/ai-hedge-fund/issues)
+- 关注 [Twitter](https://x.com/virattt) 上的更新 

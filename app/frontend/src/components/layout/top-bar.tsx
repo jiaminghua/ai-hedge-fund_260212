@@ -23,7 +23,7 @@ export function TopBar({
 }: TopBarProps) {
   return (
     <div className="absolute top-0 right-0 z-40 flex items-center gap-0 py-1 px-2 bg-panel/80">
-      {/* Left Sidebar Toggle */}
+      {/* 左侧边栏切换 */}
       <Button
         variant="ghost"
         size="sm"
@@ -32,13 +32,13 @@ export function TopBar({
           "h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-ramp-grey-700 transition-colors",
           !isLeftCollapsed && "text-foreground"
         )}
-        aria-label="Toggle left sidebar"
-        title="Toggle Left Side Bar (⌘B)"
+        aria-label="切换左侧边栏"
+        title="切换左侧边栏 (⌘B)"
       >
         <PanelLeft size={16} />
       </Button>
 
-      {/* Bottom Panel Toggle */}
+      {/* 底部面板切换 */}
       <Button
         variant="ghost"
         size="sm"
@@ -47,13 +47,13 @@ export function TopBar({
           "h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-ramp-grey-700 transition-colors",
           !isBottomCollapsed && "text-foreground"
         )}
-        aria-label="Toggle bottom panel"
-        title="Toggle Bottom Panel (⌘J)"
+        aria-label="切换底部面板"
+        title="切换底部面板 (⌘J)"
       >
         <PanelBottom size={16} />
       </Button>
 
-      {/* Right Sidebar Toggle */}
+      {/* 右侧边栏切换 */}
       <Button
         variant="ghost"
         size="sm"
@@ -62,23 +62,23 @@ export function TopBar({
           "h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-ramp-grey-700 transition-colors",
           !isRightCollapsed && "text-foreground"
         )}
-        aria-label="Toggle right sidebar"
-        title="Toggle Right Side Bar (⌘I)"
+        aria-label="切换右侧边栏"
+        title="切换右侧边栏 (⌘I)"
       >
         <PanelRight size={16} />
       </Button>
 
-      {/* Divider */}
+      {/* 分隔线 */}
       <div className="w-px h-5 bg-ramp-grey-700 mx-1" />
 
-      {/* Settings */}
+      {/* 设置 */}
       <Button
         variant="ghost"
         size="sm"
         onClick={onSettingsClick}
         className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-ramp-grey-700 transition-colors"
-        aria-label="Open settings"
-        title="Open Settings (⌘,)"
+        aria-label="打开设置"
+        title="打开设置 (⌘,)"
       >
         <Settings size={16} />
       </Button>

@@ -22,16 +22,16 @@ export function Models({ className }: ModelsProps) {
   const modelSections: ModelSection[] = [
     {
       id: 'cloud',
-      label: 'Cloud',
+      label: '云端',
       icon: Cloud,
-      description: 'API-based models from cloud providers',
+      description: '来自云提供商的基于 API 的模型',
       component: CloudModels,
     },
     {
       id: 'local',
       label: 'Ollama',
       icon: Server,
-      description: 'Ollama models running locally on your machine',
+      description: '在您的机器上本地运行的 Ollama 模型',
       component: OllamaSettings,
     },
   ];
@@ -47,9 +47,9 @@ export function Models({ className }: ModelsProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div>
-        <h2 className="text-xl font-semibold text-primary mb-2">Models</h2>
+        <h2 className="text-xl font-semibold text-primary mb-2">模型</h2>
         <p className="text-sm text-muted-foreground">
-          Manage your AI models from local and cloud providers.
+          管理来自本地和云提供商的 AI 模型。
         </p>
       </div>
 

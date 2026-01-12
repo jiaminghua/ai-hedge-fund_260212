@@ -56,12 +56,12 @@ export function FlowList({
       <SearchBox 
         value={searchQuery} 
         onChange={onSearchChange}
-        placeholder="Search flows..."
+        placeholder="搜索流程..."
       />
       
       {isLoading ? (
         <div className="flex items-center justify-center py-8">
-          <div className="text-muted-foreground text-sm">Loading flows...</div>
+          <div className="text-muted-foreground text-sm">加载流程中...</div>
         </div>
       ) : (
         <Accordion 
@@ -73,7 +73,7 @@ export function FlowList({
           {recentFlows.length > 0 && (
             <FlowItemGroup
               key="recent-flows"
-              title="Recent Flows"
+              title="最近的流程"
               flows={recentFlows}
               onLoadFlow={onLoadFlow}
               onDeleteFlow={onDeleteFlow}
@@ -85,7 +85,7 @@ export function FlowList({
           {templateFlows.length > 0 && (
             <FlowItemGroup
               key="templates"
-              title="Templates"
+              title="模板"
               flows={templateFlows}
               onLoadFlow={onLoadFlow}
               onDeleteFlow={onDeleteFlow}
@@ -101,11 +101,11 @@ export function FlowList({
           {flows.length === 0 ? (
             <div className="space-y-2">
               <FolderOpen size={32} className="mx-auto text-muted-foreground" />
-              <div>No flows saved yet</div>
-              <div className="text-xs">Create your first flow to get started</div>
+              <div>还没有保存的流程</div>
+              <div className="text-xs">创建您的第一个流程开始使用</div>
             </div>
           ) : (
-            'No flows match your search'
+            '没有匹配的流程'
           )}
         </div>
       )}

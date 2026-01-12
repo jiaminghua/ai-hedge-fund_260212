@@ -29,12 +29,12 @@ export function ComponentList({
       <SearchBox 
         value={searchQuery} 
         onChange={onSearchChange}
-        placeholder="Search components..."
+        placeholder="搜索组件..."
       />
       
       {isLoading ? (
         <div className="flex items-center justify-center py-8">
-          <div className="text-muted-foreground text-sm">Loading components...</div>
+          <div className="text-muted-foreground text-sm">加载组件中...</div>
         </div>
       ) : (
         <Accordion 
@@ -57,11 +57,11 @@ export function ComponentList({
         <div className="text-center py-8 text-muted-foreground text-sm">
           {componentGroups.length === 0 ? (
             <div className="space-y-2">
-              <div>No components available</div>
-              <div className="text-xs">Components will appear here when loaded</div>
+              <div>没有可用组件</div>
+              <div className="text-xs">组件加载后将显示在这里</div>
             </div>
           ) : (
-            'No components match your search'
+            '没有匹配的组件'
           )}
         </div>
       )}
