@@ -25,7 +25,22 @@ export function getDisplayName(agentName: string): string {
     }
   }
   
-  // Replace remaining underscores with spaces and title case
+  // 中文翻译映射
+  const translations: Record<string, string> = {
+    "fundamentals": "基本面分析师",
+    "sentiment": "情绪分析师",
+    "technical": "技术分析师",
+    "valuation": "估值分析师",
+    "portfolio_manager": "投资组合经理",
+    "risk_management": "风险管理"
+  };
+  
+  // 检查是否有中文翻译
+  if (translations[name]) {
+    return translations[name];
+  }
+  
+  // Replace remaining underscores with spaces and title case (fallback for unknown agents)
   return name.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase());
 }
 

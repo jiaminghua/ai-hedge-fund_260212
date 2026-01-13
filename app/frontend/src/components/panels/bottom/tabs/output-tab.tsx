@@ -13,6 +13,7 @@ interface OutputTabProps {
 export function OutputTab({ className }: OutputTabProps) {
   const { currentFlowId } = useFlowContext();
   const { getAgentNodeDataForFlow, getOutputNodeDataForFlow } = useNodeContext();
+  // @ts-ignore: updateTrigger is used to force re-renders but its value is not directly used
   const [updateTrigger, setUpdateTrigger] = useState(0);
   
   // Get current flow data

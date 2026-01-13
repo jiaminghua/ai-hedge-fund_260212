@@ -11,20 +11,21 @@ function BacktestProgress({ agentData }: { agentData: Record<string, any> }) {
   if (!backtestAgent) return null;
   
   // Get the latest backtest result from the backtest results array
-  const backtestResults = backtestAgent.backtestResults || [];
-  const latestBacktestResult = backtestResults.length > 0 ? backtestResults[backtestResults.length - 1] : null;
+  // 已注释：backtestResults 变量未使用
+  // const backtestResults = backtestAgent.backtestResults || [];
+  // const latestBacktestResult = backtestResults.length > 0 ? backtestResults[backtestResults.length - 1] : null;
   
   return (
     <Card className="bg-transparent mb-4">
       <CardHeader>
-        <CardTitle className="text-lg">Backtest Progress</CardTitle>
+        <CardTitle className="text-lg">回测进度</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {/* Current Status */}
           <div className="flex items-center gap-2">
             <MoreHorizontal className="h-4 w-4 text-yellow-500" />
-            <span className="font-medium">Backtest Runner</span>
+            <span className="font-medium">回测运行器</span>
             <span className="text-yellow-500 flex-1">{backtestAgent.message || backtestAgent.status}</span>
           </div>
         </div>

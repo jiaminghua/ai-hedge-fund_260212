@@ -13,7 +13,7 @@ function ProgressSection({ sortedAgents }: { sortedAgents: [string, any][] }) {
   return (
     <Card className="bg-transparent mb-4">
       <CardHeader>
-        <CardTitle className="text-lg">Progress</CardTitle>
+        <CardTitle className="text-lg">进度</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-1">
@@ -137,35 +137,36 @@ function AnalysisResultsSection({ outputData }: { outputData: any }) {
                       <TableHead>Reasoning</TableHead>
                     </TableRow>
                   </TableHeader>
-                                     <TableBody>
-                     {Object.entries(outputData.analyst_signals || {})
-                       .filter(([agent, signals]: [string, any]) => 
-                         ticker in signals && !agent.includes("risk_management")
-                       )
-                       .sort(([agentA], [agentB]) => agentA.localeCompare(agentB))
-                       .map(([agent, signals]: [string, any]) => {
-                         const signal = signals[ticker];
-                         const signalType = signal.signal?.toUpperCase() || 'UNKNOWN';
-                         const signalColor = getSignalColor(signalType);
-                        
-                        return (
-                          <TableRow key={agent}>
-                            <TableCell className="font-medium">
-                              {getDisplayName(agent)}
-                            </TableCell>
-                            <TableCell>
-                              <span className={cn("font-medium", signalColor)}>
-                                {signalType}
-                              </span>
-                            </TableCell>
-                            <TableCell>{signal.confidence || 0}%</TableCell>
-                            <TableCell className="max-w-md">
-                              <ReasoningContent content={signal.reasoning} />
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                  </TableBody>
+                  <TableBody>
+                  {Object.entries(outputData.analyst_signals || {})
+                    .filter(([agent, signals]: [string, any]) => 
+                      ticker in signals && !agent.includes("risk_management")
+                    )
+                    .sort(([agentA], [agentB]) => agentA.localeCompare(agentB))
+                    .map(([agent, signals]: [string, any]) => {
+                      const signal = signals[ticker];
+                      if (!signal) return null;
+                      const signalType = signal.signal?.toUpperCase() || 'UNKNOWN';
+                      const signalColor = getSignalColor(signalType);
+                      
+                      return (
+                        <TableRow key={agent}>
+                          <TableCell className="font-medium">
+                            {getDisplayName(agent)}
+                          </TableCell>
+                          <TableCell>
+                            <span className={cn("font-medium", signalColor)}>
+                              {signalType}
+                            </span>
+                          </TableCell>
+                          <TableCell>{signal.confidence || 0}%</TableCell>
+                          <TableCell className="max-w-md">
+                            <ReasoningContent content={signal.reasoning} />
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
                 </Table>
                 
                 {/* Trading Decision */}

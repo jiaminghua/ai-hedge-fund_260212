@@ -16,7 +16,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { TopBar } from './layout/top-bar';
 
 // Create a LayoutContent component to access the FlowContext, TabsContext, and LayoutContext
-function LayoutContent({ children }: { children: ReactNode }) {
+function LayoutContent({ /* children */ }: { children: ReactNode }) {
   const { reactFlowInstance } = useFlowContext();
   const { openTab } = useTabsContext();
   const { isBottomCollapsed, expandBottomPanel, collapseBottomPanel, toggleBottomPanel } = useLayoutContext();
@@ -81,24 +81,25 @@ function LayoutContent({ children }: { children: ReactNode }) {
   };
 
   // Calculate main content positioning accounting for tab bar height
-  const getMainContentStyle = () => {
-    const tabBarHeight = 40; // Approximate tab bar height
-    let top = tabBarHeight;
-    let bottom = 0;
-    
-    if (!isBottomCollapsed) {
-      bottom = bottomPanelHeight;
-    }
-    
-    return {
-      top: `${top}px`,
-      bottom: `${bottom}px`,
-      left: '0',
-      right: '0',
-      width: 'auto',
-      height: 'auto',
-    };
-  };
+  // This function is kept for future use, currently not used
+  // const getMainContentStyle = () => {
+  //   const tabBarHeight = 40; // Approximate tab bar height
+  //   let top = tabBarHeight;
+  //   let bottom = 0;
+  //   
+  //   if (!isBottomCollapsed) {
+  //     bottom = bottomPanelHeight;
+  //   }
+  //   
+  //   return {
+  //     top: `${top}px`,
+  //     bottom: `${bottom}px`,
+  //     left: '0',
+  //     right: '0',
+  //     width: 'auto',
+  //     height: 'auto',
+  //   };
+  // };
 
   return (
     <div className="flex h-screen w-screen overflow-hidden relative bg-background">
