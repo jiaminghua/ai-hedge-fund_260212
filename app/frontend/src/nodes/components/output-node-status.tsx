@@ -20,10 +20,10 @@ export function OutputNodeStatus({
   // isConnected 变量未使用，但需要保留以符合接口定义
   isConnected: _isConnected,
   onViewOutput,
-  processingText = "In Progress",
-  completingText = "Completing",
-  availableText = "View Output",
-  idleText = "Idle"
+  processingText = "处理中",
+  completingText = "完成中",
+  availableText = "查看输出",
+  idleText = "空闲"
 }: OutputNodeStatusProps) {
   // Determine the current state and appropriate styling
   const isLocallyProcessing = isProcessing; // Connected agents are running

@@ -97,23 +97,23 @@ function BacktestTradingTable({ agentData }: { agentData: Record<string, any> })
   return (
     <Card className="bg-transparent mb-4">
       <CardHeader>
-        <CardTitle className="text-lg">Activity</CardTitle>
+        <CardTitle className="text-lg">活动</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="max-h-96 overflow-y-auto">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Date</TableHead>
-                <TableHead>Ticker</TableHead>
-                <TableHead>Action</TableHead>
-                <TableHead>Quantity</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Shares</TableHead>
-                <TableHead>Position Value</TableHead>
-                <TableHead>Bullish</TableHead>
-                <TableHead>Bearish</TableHead>
-                <TableHead>Neutral</TableHead>
+                <TableHead>日期</TableHead>
+                <TableHead>股票代码</TableHead>
+                <TableHead>操作</TableHead>
+                <TableHead>数量</TableHead>
+                <TableHead>价格</TableHead>
+                <TableHead>股数</TableHead>
+                <TableHead>持仓价值</TableHead>
+                <TableHead>看涨</TableHead>
+                <TableHead>看跌</TableHead>
+                <TableHead>中性</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -163,11 +163,11 @@ function BacktestResults({ outputData }: { outputData: any }) {
     return (
       <Card className="bg-transparent mb-4">
         <CardHeader>
-          <CardTitle className="text-lg">Backtest Results</CardTitle>
+          <CardTitle className="text-lg">回测结果</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8 text-muted-foreground">
-            Backtest completed. Performance metrics will appear here.
+            回测已完成。性能指标将显示在此处。
           </div>
         </CardContent>
       </Card>
@@ -179,17 +179,17 @@ function BacktestResults({ outputData }: { outputData: any }) {
   return (
     <Card className="bg-transparent mb-4">
       <CardHeader>
-        <CardTitle className="text-lg">Backtest Results</CardTitle>
+        <CardTitle className="text-lg">回测结果</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {/* Performance Metrics */}
+          {/* 性能指标 */}
           <div className="space-y-2">
-            <h4 className="font-medium">Performance Metrics</h4>
+            <h4 className="font-medium">性能指标</h4>
             <div className="space-y-1 text-sm">
               {performance_metrics.sharpe_ratio !== null && performance_metrics.sharpe_ratio !== undefined && (
                 <div className="flex justify-between">
-                  <span>Sharpe Ratio:</span>
+                  <span>夏普比率:</span>
                   <span className={cn("font-medium", performance_metrics.sharpe_ratio > 1 ? "text-green-500" : "text-red-500")}>
                     {performance_metrics.sharpe_ratio.toFixed(2)}
                   </span>
@@ -197,7 +197,7 @@ function BacktestResults({ outputData }: { outputData: any }) {
               )}
               {performance_metrics.sortino_ratio !== null && performance_metrics.sortino_ratio !== undefined && (
                 <div className="flex justify-between">
-                  <span>Sortino Ratio:</span>
+                  <span>索提诺比率:</span>
                   <span className={cn("font-medium", performance_metrics.sortino_ratio > 1 ? "text-green-500" : "text-red-500")}>
                     {performance_metrics.sortino_ratio.toFixed(2)}
                   </span>
@@ -205,7 +205,7 @@ function BacktestResults({ outputData }: { outputData: any }) {
               )}
               {performance_metrics.max_drawdown !== null && performance_metrics.max_drawdown !== undefined && (
                 <div className="flex justify-between">
-                  <span>Max Drawdown:</span>
+                  <span>最大回撤:</span>
                   <span className="font-medium text-red-500">
                     {Math.abs(performance_metrics.max_drawdown).toFixed(2)}%
                   </span>
@@ -216,18 +216,18 @@ function BacktestResults({ outputData }: { outputData: any }) {
           
           {/* Portfolio Summary */}
           <div className="space-y-2">
-            <h4 className="font-medium">Portfolio Summary</h4>
+            <h4 className="font-medium">投资组合总结</h4>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">
-                <span>Total Days:</span>
+                <span>总天数:</span>
                 <span className="font-medium">{total_days}</span>
               </div>
               <div className="flex justify-between">
-                <span>Final Cash:</span>
+                <span>最终现金:</span>
                 <span className="font-medium">${final_portfolio.cash.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span>Margin Used:</span>
+                <span>使用保证金:</span>
                 <span className="font-medium">${final_portfolio.margin_used.toLocaleString()}</span>
               </div>
             </div>
@@ -235,23 +235,23 @@ function BacktestResults({ outputData }: { outputData: any }) {
           
           {/* Exposure Metrics */}
           <div className="space-y-2">
-            <h4 className="font-medium">Exposure Metrics</h4>
+            <h4 className="font-medium">风险敞口指标</h4>
             <div className="space-y-1 text-sm">
               {performance_metrics.gross_exposure !== null && performance_metrics.gross_exposure !== undefined && (
                 <div className="flex justify-between">
-                  <span>Gross Exposure:</span>
+                  <span>总敞口:</span>
                   <span className="font-medium">${performance_metrics.gross_exposure.toLocaleString()}</span>
                 </div>
               )}
               {performance_metrics.net_exposure !== null && performance_metrics.net_exposure !== undefined && (
                 <div className="flex justify-between">
-                  <span>Net Exposure:</span>
+                  <span>净敞口:</span>
                   <span className="font-medium">${performance_metrics.net_exposure.toLocaleString()}</span>
                 </div>
               )}
               {performance_metrics.long_short_ratio !== null && performance_metrics.long_short_ratio !== undefined && (
                 <div className="flex justify-between">
-                  <span>Long/Short Ratio:</span>
+                  <span>多空比率:</span>
                   <span className="font-medium">
                     {performance_metrics.long_short_ratio === Infinity || performance_metrics.long_short_ratio === null ? '∞' : performance_metrics.long_short_ratio.toFixed(2)}
                   </span>
@@ -264,15 +264,15 @@ function BacktestResults({ outputData }: { outputData: any }) {
         {/* Final Positions */}
         {final_portfolio.positions && (
           <div>
-            <h4 className="font-medium mb-2">Final Positions</h4>
+            <h4 className="font-medium mb-2">最终持仓</h4>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Ticker</TableHead>
-                  <TableHead>Long Shares</TableHead>
-                  <TableHead>Short Shares</TableHead>
-                  <TableHead>Long Cost Basis</TableHead>
-                  <TableHead>Short Cost Basis</TableHead>
+                  <TableHead>股票代码</TableHead>
+                  <TableHead>多头股数</TableHead>
+                  <TableHead>空头股数</TableHead>
+                  <TableHead>多头成本基础</TableHead>
+                  <TableHead>空头成本基础</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -343,26 +343,26 @@ function BacktestPerformanceMetrics({ agentData }: { agentData: Record<string, a
   return (
     <Card className="bg-transparent mb-4">
       <CardHeader>
-        <CardTitle className="text-lg">Performance</CardTitle>
+        <CardTitle className="text-lg">性能</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
-            <div className="text-xs text-muted-foreground">Total Return</div>
+            <div className="text-xs text-muted-foreground">总收益</div>
             <div className={cn("font-sm", totalReturn >= 0 ? "text-green-500" : "text-red-500")}>
               {totalReturn >= 0 ? '+' : ''}{totalReturn.toFixed(2)}%
             </div>
           </div>
           <div className="text-center">
-            <div className="text-xs text-muted-foreground">Win Rate</div>
+            <div className="text-xs text-muted-foreground">胜率</div>
             <div className="font-sm">{winRate.toFixed(1)}%</div>
           </div>
           <div className="text-center">
-            <div className="text-xs text-muted-foreground">Max Drawdown</div>
+            <div className="text-xs text-muted-foreground">最大回撤</div>
             <div className="font-sm text-red-500">{Math.abs(maxDrawdown).toFixed(2)}%</div>
           </div>
           <div className="text-center">
-            <div className="text-xs text-muted-foreground">Periods Traded</div>
+            <div className="text-xs text-muted-foreground">交易周期</div>
             <div className="font-sm">{backtestResults.length}</div>
           </div>
         </div>
@@ -384,7 +384,7 @@ function BacktestPerformanceMetrics({ agentData }: { agentData: Record<string, a
             </div>
           </div>
           <div className="text-center">
-            <div className="text-xs text-muted-foreground">Long/Short Ratio</div>
+            <div className="text-xs text-muted-foreground">多空比率</div>
             <div className="font-sm">
               {latestPeriod.long_short_ratio === Infinity || latestPeriod.long_short_ratio === null ? '∞' : latestPeriod.long_short_ratio?.toFixed(2)}
             </div>

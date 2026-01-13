@@ -165,7 +165,7 @@ export const backtestApi = {
                       // Mark the backtest agent as complete
                       nodeContext.updateAgentNode(flowId, 'backtest', {
                         status: 'COMPLETE',
-                        message: 'Backtest completed successfully',
+                        message: '回测已成功完成',
                       });
                       
                       // Update the output node

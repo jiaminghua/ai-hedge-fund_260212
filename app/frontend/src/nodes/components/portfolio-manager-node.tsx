@@ -129,7 +129,7 @@ export function PortfolioManagerNode({
                     size="sm"
                     onClick={() => setIsDialogOpen(true)}
                   >
-                    View Investment Report
+                    查看投资报告
                   </Button>
                 )}
               </div>
