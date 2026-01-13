@@ -30,8 +30,8 @@ import { type StockAnalyzerNode } from '../types';
 import { NodeShell } from './node-shell';
 
 const runModes = [
-  { value: 'single', label: 'Single Run' },
-  { value: 'backtest', label: 'Backtest' },
+  { value: 'single', label: '单次运行' },
+  { value: 'backtest', label: '回测' },
 ];
 
 export function StockAnalyzerNode({
@@ -254,22 +254,22 @@ export function StockAnalyzerNode({
                 <div className="text-subtitle text-primary flex items-center gap-1">
                   <Tooltip delayDuration={200}>
                     <TooltipTrigger asChild>
-                      <span>Tickers</span>
+                      <span>股票代码</span>
                     </TooltipTrigger>
                     <TooltipContent side="right">
-                      You can add multiple tickers using commas (AAPL,NVDA,TSLA)
+                      您可以使用逗号添加多个股票代码 (AAPL,NVDA,TSLA)
                     </TooltipContent>
                   </Tooltip>
                 </div>
                 <Input
-                  placeholder="Enter tickers"
+                  placeholder="输入股票代码"
                   value={tickers}
                   onChange={handleTickersChange}
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <div className="text-subtitle text-primary flex items-center gap-1">
-                  Run
+                  运行
                 </div>
                 <div className="flex gap-2">
                   <Popover open={open} onOpenChange={setOpen}>
@@ -281,7 +281,7 @@ export function StockAnalyzerNode({
                         className="flex-1 justify-between h-10 px-3 py-2 bg-node border border-border hover:bg-accent"
                       >
                         <span className="text-subtitle">
-                          {runModes.find((mode) => mode.value === runMode)?.label || 'Single Run'}
+                          {runModes.find((mode) => mode.value === runMode)?.label || '单次运行'}
                         </span>
                         <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                       </Button>
@@ -289,7 +289,7 @@ export function StockAnalyzerNode({
                     <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0 bg-node border border-border shadow-lg">
                       <Command className="bg-node">
                         <CommandList className="bg-node">
-                          <CommandEmpty>No run mode found.</CommandEmpty>
+                          <CommandEmpty>未找到运行模式</CommandEmpty>
                           <CommandGroup>
                             {runModes.map((mode) => (
                               <CommandItem
@@ -316,7 +316,7 @@ export function StockAnalyzerNode({
                     size="icon" 
                     variant="secondary"
                     className="flex-shrink-0 transition-all duration-200 hover:bg-primary hover:text-primary-foreground active:scale-95"
-                    title={showAsProcessing ? "Stop" : `Run (${formatKeyboardShortcut('↵')})`}
+                    title={showAsProcessing ? "停止" : `运行 (${formatKeyboardShortcut('↵')})`}
                     onClick={showAsProcessing ? handleStop : handlePlay}
                     disabled={!canRunHedgeFund && !showAsProcessing}
                   >
@@ -332,13 +332,13 @@ export function StockAnalyzerNode({
                 <Accordion type="single" collapsible>
                   <AccordionItem value="advanced" className="border-none">
                     <AccordionTrigger className="!text-subtitle text-primary">
-                      Advanced
+                      高级设置
                     </AccordionTrigger>
                     <AccordionContent className="pt-2">
                       <div className="flex flex-col gap-4">
                         <div className="flex flex-col gap-2">
                           <div className="text-subtitle text-primary flex items-center gap-1">
-                            Available Cash
+                            可用现金
                           </div>
                           <div className="relative flex-1">
                             <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none">
@@ -355,7 +355,7 @@ export function StockAnalyzerNode({
                         </div>
                         <div className="flex flex-col gap-2">
                           <div className="text-subtitle text-primary flex items-center gap-1">
-                            Start Date
+                            开始日期
                           </div>
                           <Input
                             type="date"
@@ -365,7 +365,7 @@ export function StockAnalyzerNode({
                         </div>
                         <div className="flex flex-col gap-2">
                           <div className="text-subtitle text-primary flex items-center gap-1">
-                            End Date
+                            结束日期
                           </div>
                           <Input
                             type="date"
