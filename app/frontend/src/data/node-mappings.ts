@@ -41,38 +41,38 @@ export const extractBaseAgentKey = (uniqueId: string): string => {
 
 // Define base node creation functions (non-agent nodes)
 const baseNodeTypeDefinitions: Record<string, NodeTypeDefinition> = {
-  "Portfolio Input": {
+  "投资组合输入": {
     createNode: (position: { x: number, y: number }): AppNode => ({
       id: `portfolio-start-node_${generateUniqueIdSuffix()}`,
       type: "portfolio-start-node",
       position,
       data: {
-        name: "Portfolio Input",
-        description: "Enter your portfolio including tickers, shares, and prices. Connect this node to Analysts to generate insights.",
+        name: "投资组合输入",
+        description: "输入您的投资组合，包括股票代码、股数和价格。将此节点连接到分析师以生成洞察。",
         status: "Idle",
       },
     }),
   },
-  "Portfolio Manager": {
+  "投资组合管理器": {
     createNode: (position: { x: number, y: number }): AppNode => ({
       id: `portfolio_manager_${generateUniqueIdSuffix()}`,
       type: "portfolio-manager-node",
       position,
       data: {
-        name: "Portfolio Manager",
-        description: "Generates investment decisions based on input from Analysts.",
+        name: "投资组合管理器",
+        description: "根据分析师的输入生成投资决策。",
         status: "Idle",
       },
     }),
   },
-  "Stock Input": {
+  "股票输入": {
     createNode: (position: { x: number, y: number }): AppNode => ({
       id: `stock-analyzer-node_${generateUniqueIdSuffix()}`,
       type: "stock-analyzer-node",
       position,
       data: {
-        name: "Stock Input",
-        description: "Enter individual stocks and connect this node to Analysts to generate insights.",
+        name: "股票输入",
+        description: "输入单个股票并将此节点连接到分析师以生成洞察。",
         status: "Idle",
       },
     }),
