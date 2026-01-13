@@ -91,7 +91,8 @@ const getNodeTypeDefinitions = async (): Promise<Record<string, NodeTypeDefiniti
   
   // Create agent node definitions
   const agentNodeDefinitions = agents.reduce((acc: Record<string, NodeTypeDefinition>, agent: Agent) => {
-    acc[agent.display_name] = {
+    // Create node type definition
+    const nodeTypeDef = {
       createNode: (position: { x: number, y: number }): AppNode => ({
         id: `${agent.key}_${generateUniqueIdSuffix()}`,
         type: "agent-node",
@@ -103,6 +104,11 @@ const getNodeTypeDefinitions = async (): Promise<Record<string, NodeTypeDefiniti
         },
       }),
     };
+    
+    // Add both key and display_name as keys for node type definition
+    acc[agent.key] = nodeTypeDef;
+    acc[agent.display_name] = nodeTypeDef;
+    
     return acc;
   }, {});
 
