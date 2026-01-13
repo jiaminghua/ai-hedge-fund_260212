@@ -216,16 +216,22 @@ export function FlowProvider({ children }: FlowProviderProps) {
   // Add a single node to the flow
   const addSingleNodeToFlow = useCallback(async (componentName: string) => {
     try {
+      console.log('addSingleNodeToFlow called with:', componentName);
       const nodeTypeDefinition = await getNodeTypeDefinition(componentName);
+      console.log('Node type definition found:', !!nodeTypeDefinition);
       if (!nodeTypeDefinition) {
         console.warn(`No node type definition found for component: ${componentName}`);
         return;
       }
 
       const position = getViewportPosition(false);
+      console.log('Node position:', position);
       const newNode = nodeTypeDefinition.createNode(position);
+      console.log('New node created:', newNode);
       reactFlowInstance.setNodes((nodes) => [...nodes, newNode]);
+      console.log('Node added to flow');
       markAsUnsaved();
+      console.log('Flow marked as unsaved');
     } catch (error) {
       console.error(`Failed to add component ${componentName} to flow:`, error);
     }
@@ -332,9 +338,12 @@ export function FlowProvider({ children }: FlowProviderProps) {
 
   // Main entry point - route to single node or multi node
   const addComponentToFlow = useCallback(async (componentName: string) => {
+    console.log('addComponentToFlow called with:', componentName);
     if (isMultiNodeComponent(componentName)) {
+      console.log('  is multi-node component');
       await addMultipleNodesToFlow(componentName);
     } else {
+      console.log('  is single-node component');
       await addSingleNodeToFlow(componentName);
     }
   }, [addMultipleNodesToFlow, addSingleNodeToFlow]);

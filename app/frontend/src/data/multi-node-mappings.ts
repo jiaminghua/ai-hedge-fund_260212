@@ -77,5 +77,7 @@ export function getMultiNodeDefinition(name: string): MultiNodeDefinition | null
 }
 
 export function isMultiNodeComponent(componentName: string): boolean {
-  return componentName in multiNodeDefinition;
+  const result = componentName in multiNodeDefinition;
+  console.log('isMultiNodeComponent called with:', componentName, 'result:', result);
+  return result;
 } 

@@ -116,7 +116,10 @@ const getNodeTypeDefinitions = async (): Promise<Record<string, NodeTypeDefiniti
 };
 
 export async function getNodeTypeDefinition(componentName: string): Promise<NodeTypeDefinition | null> {
+  // Clear cache to ensure we get the latest definitions (useful for development)
+  nodeTypeDefinitionsCache = null;
   const nodeTypeDefinitions = await getNodeTypeDefinitions();
+  console.log('getNodeTypeDefinition:', componentName, nodeTypeDefinitions[componentName] ? 'Found' : 'Not found');
   return nodeTypeDefinitions[componentName] || null;
 }
 
